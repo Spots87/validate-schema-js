@@ -1,33 +1,40 @@
-import * as yup from 'yup';
+const Ajv = require("ajv")
+const ajv = new Ajv()
+const addFormats = require("ajv-formats")
+addFormats(ajv)
 const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
+    const schema = {
+        type: "object",
+        properties: {
+          name: {type: "string"},
+          age: {type: "integer"},
+          email: {
+            type: "string",
+            format: "email"
+          },
+        },
+        required: ["name", "age", "email"],
+        additionalProperties: false
+    }
+
+    const validate = ajv.compile(schema)
+     
     const user = {
         userName : core.getInput('user-name'),
         userAge : core.getInput('user-age'),
         userEmail : core.getInput('user-email'),
     }
 
-    const schema = yup.object().shape({
-        name: yup.string().required(),
-        age: yup.number().required().positive().integer(),
-        email: yup.string().email(),
-    });
-        
-    // check validity
-    schema
-    .validate({
-        name: userName,
-        age: parseInt(userAge),
-        email: userEmail
-    })
-    .then(function (user) {
+    const valid = validate(user)
+
+    if(valid){
         core.setOutput("is-valid", `${user} is a valid object`);
-    })
-    .catch(function (err) {
+    }else{
         core.setFailed(err)
-    });
+    }
 
     const payload = JSON.stringify(github.context.payload, undefined, 2)
     console.log(`The event payload: ${payload}`);

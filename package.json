@@ -1,0 +1,25 @@
+{
+  "name": "validate-schema",
+  "version": "1.0.0",
+  "description": "Validate Schema Object Using JS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Spots87/validate-schema-js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Spots87/validate-schema-js/issues"
+  },
+  "homepage": "https://github.com/Spots87/validate-schema-js#readme",
+  "dependencies": {
+    "@actions/core": "^1.9.0",
+    "@actions/github": "^5.0.3",
+    "yup": "^0.32.11"
+  }
+}

@@ -1,0 +1,21 @@
+name: 'Validate Schema Object'
+description: 'Validate a schema object in JS'
+inputs:
+  user-name:
+    description: 'Name of User'
+    required: true
+    default: 'Tim'
+  user-age:
+    description: 'Age of User'
+    required: true
+    default: '35'
+  user-email:
+    description: 'Email of User'
+    required: true
+    default: 'admin@example.com'
+outputs:
+  is-valid:
+    description: 'Are inputs valid for schema object'
+runs:
+  using: 'node16'
+  main: 'index.js'

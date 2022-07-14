@@ -23,9 +23,9 @@ try {
     const validate = ajv.compile(schema)
      
     const user = {
-        userName : core.getInput('user-name'),
-        userAge : core.getInput('user-age'),
-        userEmail : core.getInput('user-email'),
+        name: core.getInput('user-name'),
+        age: core.getInput('user-age'),
+        email: core.getInput('user-email'),
     }
 
     const valid = validate(user)
@@ -35,9 +35,6 @@ try {
     }else{
         core.setFailed(validate.errors)
     }
-
-    const payload = JSON.stringify(github.context.payload, undefined, 2)
-    console.log(`The event payload: ${payload}`);
 } catch (error) {
   core.setFailed(error.message);
 }

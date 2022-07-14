@@ -33,7 +33,7 @@ try {
     if(valid){
         core.setOutput("is-valid", `${user} is a valid object`);
     }else{
-        core.setFailed(err)
+        core.setFailed(validate.errors)
     }
 
     const payload = JSON.stringify(github.context.payload, undefined, 2)

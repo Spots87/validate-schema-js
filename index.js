@@ -31,7 +31,7 @@ try {
     const valid = validate(user)
 
     if(valid){
-        core.setOutput("is-valid", `${user} is a valid object`);
+        core.setOutput("is-valid", `${JSON.stringify(user)} is a valid object`);
     }else{
         core.setFailed(validate.errors)
     }

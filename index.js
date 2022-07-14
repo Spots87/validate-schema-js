@@ -24,7 +24,7 @@ try {
      
     const user = {
         name: core.getInput('user-name'),
-        age: core.getInput('user-age'),
+        age: parseInt(core.getInput('user-age')),
         email: core.getInput('user-email'),
     }
 
